@@ -1,0 +1,15 @@
+{
+  "name": "n8n-cheatsheet",
+  "version": "1.0.0",
+  "description": "Dynamisch generiertes Cheat Sheet für n8n",
+  "main": "generate.js",
+  "scripts": {
+    "build": "node generate.js"
+  },
+  "dependencies": {
+    "js-yaml": "^4.1.0",
+    "markdown-it": "^13.0.1",
+    "nunjucks": "^3.2.4",
+    "puppeteer": "^21.3.8"
+  }
+}
