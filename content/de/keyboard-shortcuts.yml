@@ -1,0 +1,10 @@
+- category: Workflow Control
+  shortcuts:
+    - detail: Create New Workflow
+      keys: Ctrl + Alt + N
+    - detail: Save Current Workflow
+      keys: Ctrl + S
+- category: Canvas Navigation
+  shortcuts:
+    - detail: Move Node View
+      keys: Space + Drag
