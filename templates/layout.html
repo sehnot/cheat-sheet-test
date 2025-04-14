@@ -8,7 +8,7 @@
 <body>
   <div class="section">
     <h1>{{ introTitle }}</h1>
-    <p>{{ introText }}</p>
+    {{ introText | safe }}
   </div>
 
   {% for group in shortcuts %}
