@@ -1,12 +1,56 @@
 body {
-  font-family: sans-serif;
-  color: #ac2b2b;
-  padding: 2rem;
+  font-family: "Segoe UI", Roboto, sans-serif;
+  font-size: 11pt;
+  margin: 0;
+  padding: 1.5cm;
+  box-sizing: border-box;
+  line-height: 1.5;
+}
+
+h1, h2 {
+  margin: 0 0 0.5rem 0;
+  font-weight: 600;
+}
+
+h1 {
+  font-size: 18pt;
+  grid-column: span 3;
+}
+
+h2 {
+  font-size: 13pt;
+  margin-top: 0.8rem;
+}
+
+.grid-three-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1rem;
+  align-items: start;
 }
 
 .section {
-  margin-bottom: 2rem;
-  border: 2px solid #ac2b2b;
-  padding: 1rem;
-  border-radius: 8px;
+  break-inside: avoid;
+  margin-bottom: 1rem;
+}
+
+.shortcut-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.shortcut-list li {
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background-color: #f3f3f3;
+  padding: 0.4rem 0.6rem;
+  margin-bottom: 0.4rem;
+  font-size: 10pt;
+}
+
+.shortcut-list li strong {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.2rem;
 }
