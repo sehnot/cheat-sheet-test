@@ -11,21 +11,35 @@
         {{ introText | safe }}
       </div>
     </div>
-
+  
     <div class="grid-three-columns">
       {% for group in shortcuts %}
-        <div class="section">
+        <div class="section category-block category-{{ loop.index }}">
           <h2>{{ group.category }}</h2>
           <ul class="shortcut-list">
             {% for shortcut in group.shortcuts %}
               <li>
                 <strong>{{ shortcut.detail }}</strong>
-                {{ shortcut.keys }}
+                {{ shortcut.keys | replace("Ctrl", "⌃") 
+                                | replace("Alt", "⌥") 
+                                | replace("Cmd", "⌘") 
+                                | replace("Shift", "⇧") 
+                                | replace("Del", "⌫") }}
               </li>
             {% endfor %}
           </ul>
         </div>
       {% endfor %}
     </div>
+  
+    <footer>
+      <div class="qr-code">
+        <img src="https://api.qrserver.com/v1/create-qr-code/?size=80x80&data=https://sehnot.github.io/cheat-sheet-test/cheatsheet-de.pdf" alt="QR-Code zur Online-Version">
+        <p>Zur Online-Version</p>
+      </div>
+      <div class="meta">
+        v1.0 – Erstellt mit ❤️ für die n8n Community
+      </div>
+    </footer>
   </body>
 </html>

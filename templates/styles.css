@@ -32,6 +32,10 @@ h2 {
 .section {
   break-inside: avoid;
   margin-bottom: 1rem;
+  padding: 0.8rem;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.08);
 }
 
 .shortcut-list {
@@ -41,11 +45,11 @@ h2 {
 }
 
 .shortcut-list li {
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  background-color: #f3f3f3;
+  background: #ffffff;
   padding: 0.4rem 0.6rem;
+  border-radius: 6px;
   margin-bottom: 0.4rem;
+  border: 1px solid #ccc;
   font-size: 10pt;
 }
 
@@ -53,4 +57,39 @@ h2 {
   display: block;
   font-weight: 600;
   margin-bottom: 0.2rem;
+}
+
+/* 🔵 Farbvarianten für Kategorien */
+.category-1 { background-color: #e3f2fd; }
+.category-2 { background-color: #e8f5e9; }
+.category-3 { background-color: #fff3e0; }
+.category-4 { background-color: #f3e5f5; }
+.category-5 { background-color: #ede7f6; }
+
+footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid #ccc;
+  font-size: 9pt;
+  color: #555;
+}
+
+.qr-code {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.qr-code img {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 0.3rem;
+}
+
+.meta {
+  text-align: right;
+  flex-grow: 1;
 }
