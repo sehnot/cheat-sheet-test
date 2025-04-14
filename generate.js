@@ -6,13 +6,6 @@ const markdown = require('markdown-it')();
 const puppeteer = require('puppeteer');
 
 (async () => {
-
-  // Stelle sicher, dass 'public/' existiert
-  const outputDir = path.resolve(__dirname, 'public');
-  if (!fs.existsSync(outputDir)) {
-    fs.mkdirSync(outputDir);
-  }
-
   // Lade Inhalte
   const introMd = fs.readFileSync('./content/de/intro.md', 'utf-8');
   const introHtml = markdown.render(introMd);
@@ -21,21 +14,30 @@ const puppeteer = require('puppeteer');
 
   const shortcuts = yaml.load(fs.readFileSync('./content/de/keyboard-shortcuts.yml', 'utf-8'));
 
-  // Render HTML
-  const html = nunjucks.render('./templates/layout.html', {
+  // Render HTML mit Nunjucks
+  const rawHtml = nunjucks.render('./templates/layout.html', {
     introTitle,
     introText,
     shortcuts,
   });
 
-  // PDF erstellen
+  // CSS inline einfügen
+  const style = fs.readFileSync('./templates/styles.css', 'utf-8');
+  const htmlWithStyles = rawHtml.replace('</head>', `<style>${style}</style></head>`);
+
+  // Sicherstellen, dass public/ existiert
+  const outputDir = path.resolve(__dirname, 'public');
+  if (!fs.existsSync(outputDir)) {
+    fs.mkdirSync(outputDir);
+  }
+
+  // PDF generieren
   const browser = await puppeteer.launch({
     args: ['--no-sandbox', '--disable-setuid-sandbox']
   });
   const page = await browser.newPage();
-  await page.setContent(html, { waitUntil: 'networkidle0' });
-
-  // PDF erzeugen – direkt im public-Ordner
+  await page.setContent(htmlWithStyles, { waitUntil: 'networkidle0' });
   await page.pdf({ path: path.join(outputDir, 'cheatsheet-de.pdf'), format: 'A4' });
+
   await browser.close();
 })();
