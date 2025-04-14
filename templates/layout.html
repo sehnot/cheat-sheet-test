@@ -1,24 +1,31 @@
-<body>
-  <div class="section grid-three-columns">
-    <h1>{{ introTitle }}</h1>
-    <div style="grid-column: span 3">
-      {{ introText | safe }}
-    </div>
-  </div>
-
-  <div class="grid-three-columns">
-    {% for group in shortcuts %}
-      <div class="section">
-        <h2>{{ group.category }}</h2>
-        <ul class="shortcut-list">
-          {% for shortcut in group.shortcuts %}
-            <li>
-              <strong>{{ shortcut.detail }}</strong>
-              {{ shortcut.keys }}
-            </li>
-          {% endfor %}
-        </ul>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>n8n Cheat Sheet</title>
+  </head>
+  <body>
+    <div class="section grid-three-columns">
+      <h1>{{ introTitle }}</h1>
+      <div style="grid-column: span 3">
+        {{ introText | safe }}
       </div>
-    {% endfor %}
-  </div>
-</body>
+    </div>
+
+    <div class="grid-three-columns">
+      {% for group in shortcuts %}
+        <div class="section">
+          <h2>{{ group.category }}</h2>
+          <ul class="shortcut-list">
+            {% for shortcut in group.shortcuts %}
+              <li>
+                <strong>{{ shortcut.detail }}</strong>
+                {{ shortcut.keys }}
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+      {% endfor %}
+    </div>
+  </body>
+</html>
