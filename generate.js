@@ -37,7 +37,12 @@ const puppeteer = require('puppeteer');
   });
   const page = await browser.newPage();
   await page.setContent(htmlWithStyles, { waitUntil: 'networkidle0' });
-  await page.pdf({ path: path.join(outputDir, 'cheatsheet-de.pdf'), format: 'A4' });
-
+  await page.pdf({
+    path: path.join(outputDir, 'cheatsheet-de.pdf'),
+    format: 'A4',
+    landscape: true,
+    margin: { top: 0, bottom: 0, left: 0, right: 0 }
+  });
   await browser.close();
+  
 })();
